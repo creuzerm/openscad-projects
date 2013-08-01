@@ -12,13 +12,13 @@ wallthickness = .9; // how thick we want the walls.
 difference()
 {
 	hull(){ bottlecase(bottleheight ); }
-	bottlespace(bottleheight);
+	translate([0,0,.01]) bottlespace(bottleheight);
 }
 
 difference()
 {
 	hull(){ bottlecase(bottlecapheight, bottlewidth + (4 * wallthickness) ); }
-	bottlespace(bottlecapheight, bottlewidth + (4 * wallthickness));
+	translate([0,0,.01]) bottlespace(bottlecapheight, bottlewidth + (4 * wallthickness));
 }
 
 
