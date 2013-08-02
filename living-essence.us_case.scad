@@ -1,7 +1,7 @@
 bottlecount = 3;
 bottlecapheight = 10;
-bottleheight = 32;
-bottlewidth  = 12;
+bottleheight = 21;
+bottlewidth  = 15.75;
 tolerance = .1;
 
 singlethreadthickness = .45; // this is so we can have a single layer between the bottles
