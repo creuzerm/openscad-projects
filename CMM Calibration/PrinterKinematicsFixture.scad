@@ -4,7 +4,7 @@
 
 BedX = 200;
 BedY = 200;
-OuterClearence = 6; // space left outside each side for skirts, brims, etc.
+OuterClearence = 10; // space left outside each side for skirts, brims, etc.
 
 CornerHeight = 10;
 CornerLength = 10;
@@ -37,18 +37,18 @@ union()
 
 // Lets do some leanear travel guages
 // Front 
-translate([ (BedX) * .1, OuterClearence, 0]) rotate([0,0,45]) scale([.5,.5,.5]) corner(); 
-translate([ (BedX) * .3, OuterClearence, 0]) rotate([0,0,45]) scale([.5,.5,.5]) corner(); 
-translate([ (BedX) * .5, OuterClearence, 0]) rotate([0,0,45])  scale([.5,.5,.5])corner(); 
-translate([ (BedX) * .7, OuterClearence, 0]) rotate([0,0,45])  scale([.5,.5,.5]) corner(); 
-translate([ (BedX) * .9, OuterClearence, 0]) rotate([0,0,45])  scale([.5,.5,.5]) corner(); 
+translate([ (BedX) * .2, OuterClearence, 0]) rotate([0,0,45]) smallcorner(); 
+translate([ (BedX) * .35, OuterClearence, 0]) rotate([0,0,45]) smallcorner(); 
+translate([ (BedX) * .5, OuterClearence, 0]) rotate([0,0,45])  smallcorner(); 
+translate([ (BedX) * .65, OuterClearence, 0]) rotate([0,0,45])  smallcorner(); 
+translate([ (BedX) * .8, OuterClearence, 0]) rotate([0,0,45])  smallcorner(); 
 
 // Left
-translate([ OuterClearence, (BedY)  * .1, 0]) rotate([0,0,315]) scale([.5,.5,.5]) corner(); // back left
-translate([ OuterClearence, (BedY)  * .3, 0]) rotate([0,0,315]) scale([.5,.5,.5]) corner(); // back left
-translate([ OuterClearence, (BedY)  * .5, 0]) rotate([0,0,315]) scale([.5,.5,.5]) corner(); // back left
-translate([ OuterClearence, (BedY)  * .7, 0]) rotate([0,0,315]) scale([.5,.5,.5]) corner(); // back left
-translate([ OuterClearence, (BedY)  * .9, 0]) rotate([0,0,315]) scale([.5,.5,.5]) corner(); // back left
+translate([ OuterClearence, (BedY)  * .2, 0]) rotate([0,0,315]) smallcorner(); // back left
+translate([ OuterClearence, (BedY)  * .35, 0]) rotate([0,0,315]) smallcorner(); // back left
+translate([ OuterClearence, (BedY)  * .5, 0]) rotate([0,0,315]) smallcorner(); // back left
+translate([ OuterClearence, (BedY)  * .65, 0]) rotate([0,0,315]) smallcorner(); // back left
+translate([ OuterClearence, (BedY)  * .8, 0]) rotate([0,0,315]) smallcorner(); // back left
 
 
 }
@@ -60,5 +60,14 @@ module corner()
 	{
 		cube([CornerLength, CornerThickness, CornerHeight]);
 		cube([CornerThickness, CornerLength, CornerHeight]);
+	}
+}
+
+module smallcorner()
+{
+	union()
+	{
+		cube([CornerLength/2, CornerThickness, CornerHeight/4]);
+		cube([CornerThickness, CornerLength/2, CornerHeight/4]);
 	}
 }
