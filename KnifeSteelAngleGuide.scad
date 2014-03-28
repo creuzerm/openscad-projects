@@ -1,4 +1,4 @@
-RodDiameter = 10;
+RodDiameter = 9.5;
 
 
 difference()
