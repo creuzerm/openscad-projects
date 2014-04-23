@@ -1,6 +1,8 @@
 // This creates a basic 'arm' based on measurements provided. This is useful for digital fittings of prosthetic hands.
 // https://github.com/creuzerm/openscad-projects/blob/master/e-NABLE_Arm_Model.scad 
 
+// This is intended to be used by https://github.com/laird/e-NABLE
+
 // http://enablingthefuture.org/ for more information
 
 // sample measurements for the Left side
