@@ -33,7 +33,6 @@ $fn=60;
 
 
 
-rotate([180,0,0]) //flip this so it can print better
 difference()
 {
 	union()
@@ -48,7 +47,7 @@ translate([1.25,0,]) JointFinger(2.5 - .1);
 	}
 
 	// pin hole
-	translate([0,15,15]) rotate([90,0,90]) cylinder(d=2.9, h=slide_w, center=true);
+	translate([0,15,15 +5 + (2.9 /2)]) rotate([90,0,90]) cylinder(d=2.9, h=slide_w, center=true);
 
 }
 
@@ -61,7 +60,8 @@ module JointFinger(thickness = 3)
 {
 	hull()
 	{
-		translate([0,15,15]) rotate([90,0,90]) cylinder(r=5, h=thickness, center=true);
+// this first one sets the pivot
+		translate([0,15,15 + 5 + (2.9 /2)]) rotate([90,0,90]) cylinder(r=5, h=thickness, center=true);
 		translate([0,0,15])rotate([90,0,90]) cylinder(r=5, h=thickness, center=true);
 		translate([0,0,-15])rotate([90,0,90]) cylinder(r=5, h=thickness, center=true);
 	}
