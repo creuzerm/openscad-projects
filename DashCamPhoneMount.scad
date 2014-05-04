@@ -21,7 +21,30 @@ CameraFromEdge = 28;
 CameraFromBottom = 75;
 
 
+// Phone model
+%phone();
+
 mount();
+Holder();
+
+
+// Left Leg
+difference()
+{
+	translate([PhoneWidth/2 + 1 - SparThickness/2, PhoneDepth + QiChargerDepth +3, 0]) 	cylinder(d=SparWidth, h=SparThickness); // Left peg
+	// Lets making a mouting hole
+	translate([PhoneWidth/2 + 1 - SparThickness/2, PhoneDepth + QiChargerDepth +3, 0]) 	cylinder(d=3, h=PhoneHeight); // hole
+	translate([PhoneWidth/2 + 1 - SparThickness/2, PhoneDepth + QiChargerDepth +3, 0]) 	cylinder(d=SparThickness /2 , h=2); // origin peg
+}
+
+//right leg
+difference()
+{
+translate([-(PhoneWidth/2 + 1 - SparThickness/2), PhoneDepth + QiChargerDepth +3, 0]) 	cylinder(d=SparWidth, h=SparThickness); // Right peg
+// Lets making a mouting hole
+	translate([-(PhoneWidth/2 + 1 - SparThickness/2), PhoneDepth + QiChargerDepth +3, 0])	cylinder(d=3, h=PhoneHeight); // hole
+	translate([-(PhoneWidth/2 + 1 - SparThickness/2), PhoneDepth + QiChargerDepth +3, 0]) 	cylinder(d=SparThickness /2 , h=2); // origin peg
+}
 
 
 
@@ -43,6 +66,56 @@ mount();
 
 
 
+
+module Holder()
+{
+	difference()
+	{
+	hull()
+	{
+		// Qi Charger location
+		translate([-QiChargerWidth/2, SparWidth/2 , StandoffHeight +SparThickness ]) cube([QiChargerWidth+2,QiChargerDepth+1, QiChargerHeight+2 ]);
+	
+		//Mounting Tab
+		translate([0,0,StandoffHeight + SparThickness]) cylinder(d=SparWidth, h=2);
+	
+		// Top of front cradle
+		translate([-PhoneWidth/2 -1, SparWidth/2 , StandoffHeight + (PhoneHeight * .5) ])  cube([PhoneWidth +2, PhoneDepth + 2 + QiChargerDepth+1, 1]);
+		// bottom of front cradle
+		translate([-PhoneWidth/2 -1, SparWidth/2 , StandoffHeight])  cube([PhoneWidth +2, PhoneDepth + 2 + QiChargerDepth+1, 1]);
+	}
+	
+	phone();
+	// Qi Charger location
+	translate([-QiChargerWidth/2+1, SparWidth/2+1 , StandoffHeight +SparThickness +1]) cube([QiChargerWidth,QiChargerDepth, QiChargerHeight ]);
+	// Need to angle the top..
+	
+	// Slot for the front mount
+	mount();
+	translate([0, 2, 0]) mount();
+	translate([2, 1.5, 0]) mount();mount();
+	translate([-2, 1.5, 0]) mount();
+	
+	// Lets making a mouting hole
+	cylinder(d=3, h=PhoneHeight); // hole
+	translate([0,0,StandoffHeight +SparThickness +5]) cylinder(d=SparThickness /2 , h=PhoneHeight); // origin peg
+	
+	// Knock out the screen view area
+	translate([0, PhoneDepth/2, PhoneHeight / 2 -1])  phone();
+	scale([.95, .95, .95]) translate([0, PhoneDepth/2, 5])  phone();
+
+	//rear mounting holes
+	translate([PhoneWidth/2 + 1 - SparThickness/2, PhoneDepth + QiChargerDepth +3, 0]) 	cylinder(d=3, h=PhoneHeight); // Left hole
+	translate([-(PhoneWidth/2 + 1 - SparThickness/2), PhoneDepth + QiChargerDepth +3, 0])	cylinder(d=3, h=PhoneHeight); // right hole
+
+	}
+}
+
+
+module phone()
+{
+	translate([-PhoneWidth/2, SparWidth/2 + QiChargerDepth+1 , StandoffHeight + 2]) cube([PhoneWidth,PhoneDepth, PhoneHeight ]);
+}
 
 
 
