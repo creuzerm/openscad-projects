@@ -1,3 +1,5 @@
+//This is based off of http://www.thingiverse.com/thing:289910
+
 
 include <C:\Users\creuzerm\Documents\OpenSCAD\libraries\MCAD\fillets.scad>;
 

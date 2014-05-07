@@ -1,3 +1,5 @@
+// This is based on http://www.thingiverse.com/thing:289910
+
 m3_nut_od = 6.2;
 m3_nut_radius = m3_nut_od/2;
 m3_major = 2.8;
