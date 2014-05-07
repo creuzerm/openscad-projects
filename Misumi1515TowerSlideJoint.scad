@@ -26,24 +26,30 @@ screw_offset = 15;
 
 $fn=60;
 
+FingerWidth = 2.5;
+FingerTolerance = .25;
 
 
 
 
 
-
-
+rotate([90,0,0])// Lay on it's back for better printing and strength
 difference()
 {
 	union()
 	{
 	MountingBlock();
-translate([1.25,0,]) JointFinger(2.5 - .1);
-	%translate([-1.25,0,]) JointFinger(2.5 - .1);
-	translate([-3.75,0,]) JointFinger(2.5 - .1);
-	%translate([3.75,0,]) JointFinger(2.5 - .1);
-	translate([6.25,0,]) JointFinger(2.5 - .1);
-	%translate([-6.25,0,]) JointFinger(2.5 - .1);
+translate([FingerWidth * .5 ,0,]) JointFinger(FingerWidth - FingerTolerance);
+	%translate([-FingerWidth * .5 ,0,]) JointFinger(FingerWidth - FingerTolerance);
+	translate([-FingerWidth * 1.5 ,0,]) JointFinger(FingerWidth - FingerTolerance);
+	%translate([FingerWidth * 1.5 ,0,]) JointFinger(FingerWidth - FingerTolerance);
+	translate([FingerWidth * 2.5 ,0,]) JointFinger(FingerWidth - FingerTolerance);
+	%translate([-FingerWidth * 2.5 ,0,]) JointFinger(FingerWidth - FingerTolerance);
+	translate([-FingerWidth * 3.5 ,0,]) ShortJointFinger(FingerWidth - FingerTolerance);
+	%translate([FingerWidth * 3.5 ,0,]) ShortJointFinger(FingerWidth - FingerTolerance);
+		translate([FingerWidth * 4.5 ,0,]) ShortJointFinger(FingerWidth - FingerTolerance);
+
+
 	}
 
 	// pin hole
@@ -64,6 +70,17 @@ module JointFinger(thickness = 3)
 		translate([0,15,15 + 5 + (2.9 /2)]) rotate([90,0,90]) cylinder(r=5, h=thickness, center=true);
 		translate([0,0,15])rotate([90,0,90]) cylinder(r=5, h=thickness, center=true);
 		translate([0,0,-15])rotate([90,0,90]) cylinder(r=5, h=thickness, center=true);
+	}
+}
+
+module ShortJointFinger(thickness = 3)
+{
+	hull()
+	{
+// this first one sets the pivot
+		translate([0,15,15 + 5 + (2.9 /2)]) rotate([90,0,90]) cylinder(r=5, h=thickness, center=true);
+		translate([0,0,15])rotate([90,0,90]) cylinder(r=5, h=thickness, center=true);
+		translate([0,0,12.5])rotate([90,0,90]) cylinder(r=5, h=thickness, center=true);
 	}
 }
 
