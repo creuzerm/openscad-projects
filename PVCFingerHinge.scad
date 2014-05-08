@@ -16,7 +16,7 @@ difference()
 union()
 {
 	fingerJoints();
-	translate([0,PipeOD/2 + FingerThickness,0]) cube([PipeID, PipeOD, FingerThickness*2], center=true);
+	translate([0,PipeOD/2 + FingerThickness,0]) cube([PipeID, (PipeOD + PipeID) / 2, FingerThickness*2], center=true);
 }
 	pipe();
 }
