@@ -26,7 +26,6 @@ union()
 module fingerJoints()
 {
 	translate([0,0,0])
-	//rotate([30,0,0])// Lay on it's back for better printing and strength
 	difference()
 	{
 		union()
