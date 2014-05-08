@@ -35,7 +35,7 @@ $fn=60;
 
 
 FingerWidth = 2.5;
-FingerTolerance = .25;
+FingerTolerance = .3;
 
 
 
