@@ -11,4 +11,7 @@
 6) Take macro photos from far, far away!
 
 
-Samsung Galaxy S3 model is found at http://www.thingiverse.com/thing:27428
+
+
+
+Samsung Galaxy S3 phone model is found at http://www.thingiverse.com/thing:27428
