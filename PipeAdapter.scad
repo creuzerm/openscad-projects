@@ -17,10 +17,10 @@ module Adapter(offset = 0)
 	{
 		hull()
 		{
-			translate([0,0,SegmentLength+Transition/2]) cylinder(r=Small + offset, h=Transition/2);
-			translate([0,0,SegmentLength]) cylinder(r=Large + offset, h=.1);
+			translate([0,0,SegmentLength+Transition/2]) cylinder(d=Small + offset, h=Transition/2);
+			translate([0,0,SegmentLength]) cylinder(d=Large + offset, h=.1);
 		}
-		translate([0,0,SegmentLength+Transition]) cylinder(r=Small + offset, h=SegmentLength);
-		cylinder(r=Large + offset, h=SegmentLength);
+		translate([0,0,SegmentLength+Transition]) cylinder(d=Small + offset, h=SegmentLength);
+		cylinder(d=Large + offset, h=SegmentLength);
 	}
 }
