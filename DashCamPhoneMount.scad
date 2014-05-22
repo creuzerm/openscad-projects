@@ -1,32 +1,35 @@
 StandoffHeight = 10;
 
-DashVentHoleWidth = 100;
+DashVentHoleWidth = 2.5 * 25.4;
 DashVentHoleSize = 15;
 DepthIntoVentHoles = 15;
 SparWidth = 10;
 SparThickness = 10;
 
-StepBackFromDashHoles = 150;
-HeightToSeeOverWipers = 150;
+StepBackFromDashHoles = 5 * 25.4;
+HeightToSeeOverWipers = 2.5 * 25.4;
 
 QiChargerWidth = 100;
-QiChargerHeight = 80;
+QiChargerHeight = 70;
 QiChargerDepth = 6;
 
-PhoneWidth = 250;
-PhoneHeight= 125;
-PhoneDepth= 18;
+PhoneWidth = 5.75 * 25.4;
+PhoneHeight= 3.25 * 25.4;
+PhoneDepth= 5/8 * 25.4;
 
-CameraFromEdge = 28;
-CameraFromBottom = 75;
+CameraFromEdge = 1.5 * 25.4;
+CameraFromBottom = 1.5 * 25.4;
+
 
 
 // Phone model
-%phone();
+% phone();
 
 mount();
 Holder();
 
+//rotate([180, 0, 0]){ 
+//mount();
 
 // Left Leg
 difference()
@@ -46,7 +49,7 @@ translate([-(PhoneWidth/2 + 1 - SparThickness/2), PhoneDepth + QiChargerDepth +3
 	translate([-(PhoneWidth/2 + 1 - SparThickness/2), PhoneDepth + QiChargerDepth +3, 0]) 	cylinder(d=SparThickness /2 , h=2); // origin peg
 }
 
-
+//}
 
 
 
@@ -74,20 +77,20 @@ module Holder()
 	hull()
 	{
 		// Qi Charger location
-		translate([-QiChargerWidth/2, SparWidth/2 , StandoffHeight +SparThickness ]) cube([QiChargerWidth+2,QiChargerDepth+1, QiChargerHeight+2 ]);
+		translate([-QiChargerWidth/2, SparWidth/2 , StandoffHeight + SparThickness + HeightToSeeOverWipers - StandoffHeight]) cube([QiChargerWidth+2,QiChargerDepth+1, QiChargerHeight+2 ]);
 	
 		//Mounting Tab
 		translate([0,0,StandoffHeight + SparThickness]) cylinder(d=SparWidth, h=2);
 	
 		// Top of front cradle
-		translate([-PhoneWidth/2 -1, SparWidth/2 , StandoffHeight + (PhoneHeight * .5) ])  cube([PhoneWidth +2, PhoneDepth + 2 + QiChargerDepth+1, 1]);
+		translate([-PhoneWidth/2 -1, SparWidth/2 , StandoffHeight + (PhoneHeight * .5) + HeightToSeeOverWipers - StandoffHeight])  cube([PhoneWidth +2, PhoneDepth + 2 + QiChargerDepth+1, 1]);
 		// bottom of front cradle
-		translate([-PhoneWidth/2 -1, SparWidth/2 , StandoffHeight])  cube([PhoneWidth +2, PhoneDepth + 2 + QiChargerDepth+1, 1]);
+		translate([-PhoneWidth/2 -1, SparWidth/2 , StandoffHeight] )  cube([PhoneWidth +2, PhoneDepth + 2 + QiChargerDepth+1, 1]);
 	}
 	
 	phone();
-	// Qi Charger location
-	translate([-QiChargerWidth/2+1, SparWidth/2+1 , StandoffHeight +SparThickness +1]) cube([QiChargerWidth,QiChargerDepth, QiChargerHeight ]);
+	// knock out Qi Charger location
+	translate([-QiChargerWidth/2+1, SparWidth/2+1 , StandoffHeight +SparThickness +1 + HeightToSeeOverWipers - StandoffHeight]) cube([QiChargerWidth,QiChargerDepth, QiChargerHeight ]);
 	// Need to angle the top..
 	
 	// Slot for the front mount
@@ -108,13 +111,20 @@ module Holder()
 	translate([PhoneWidth/2 + 1 - SparThickness/2, PhoneDepth + QiChargerDepth +3, 0]) 	cylinder(d=3, h=PhoneHeight); // Left hole
 	translate([-(PhoneWidth/2 + 1 - SparThickness/2), PhoneDepth + QiChargerDepth +3, 0])	cylinder(d=3, h=PhoneHeight); // right hole
 
+	// camera hole
+	translate([-QiChargerWidth/2+1, 50 , StandoffHeight +SparThickness +1 + HeightToSeeOverWipers - StandoffHeight + CameraFromBottom - 15]) rotate([90,0,0])  cylinder(r=15, h=100);
+	translate([QiChargerWidth/2+1, 50 , StandoffHeight +SparThickness +1 + HeightToSeeOverWipers - StandoffHeight + CameraFromBottom - 15]) rotate([90,0,0])  cylinder(r=15, h=100);
+	
+	// charger hole
+	translate([-150, 20 , StandoffHeight +SparThickness +1 + HeightToSeeOverWipers - StandoffHeight + CameraFromBottom - 15]) rotate([90,0,90])  cylinder(r=7, h=300);
+
 	}
 }
 
 
 module phone()
 {
-	translate([-PhoneWidth/2, SparWidth/2 + QiChargerDepth+1 , StandoffHeight + 2]) cube([PhoneWidth,PhoneDepth, PhoneHeight ]);
+	translate([-PhoneWidth/2, SparWidth/2 + QiChargerDepth+1 , StandoffHeight + 2 + HeightToSeeOverWipers - StandoffHeight]) cube([PhoneWidth,PhoneDepth, PhoneHeight ]);
 }
 
 
