@@ -12,7 +12,22 @@ $fn = 60;
 difference()
 {
     // outside
-cube([InsideLength+Wall +tolerance , InsideWidth+Wall+tolerance+Wall+tolerance, Thickness]);
+    hull () // rounded corners
+    {
+         // place 4 circles in the corners, with the given diameter
+        translate([InsideLength + tolerance + (Wall/2) , Wall/2, 0])
+        cylinder(d=Wall, h=Thickness);
+
+        translate([Wall/2, Wall/2, 0])
+        cylinder(d=Wall, h=Thickness);
+
+        translate([Wall/2, InsideWidth + Wall + tolerance + tolerance + (Wall/2), 0])
+        cylinder(d=Wall, h=Thickness);
+
+        translate([InsideLength + tolerance + (Wall/2), InsideWidth + Wall + tolerance + tolerance + (Wall/2), 0])
+        cylinder(d=Wall, h=Thickness); 
+    }
+    
     //inside
 translate([Wall, Wall, 0]) cube([InsideLength + tolerance, InsideWidth + tolerance + tolerance, Thickness]);
     
