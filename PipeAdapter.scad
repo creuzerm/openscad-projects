@@ -1,8 +1,8 @@
 Small = 27.5;
-Large = 34.5;
+Large = 34.5; // 41.5
 SegmentLength = 18;
 Transition = 10;
-Thickness = 2;
+Thickness = 3;
 
 difference()
 {
