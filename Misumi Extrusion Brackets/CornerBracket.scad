@@ -1,7 +1,7 @@
 Length = 50;
-Height = 15;
-Thickness = 10;
+Thickness = 8;
 holeDiameter = 3;
+Height = 15;
 
 
 
@@ -15,6 +15,7 @@ difference()
         brace();
     }
     holes();
+    MountingSlot();
 }
 
 
@@ -37,8 +38,16 @@ module lip()
 }
 
 
-
-
+module MountingSlot()
+{
+hull()
+{
+ translate([Length/2+holeDiameter, Length/2-holeDiameter, 0]) 
+      cylinder(d=holeDiameter, h=Thickness +1);
+ translate([Length/2-holeDiameter, Length/2+holeDiameter, 0]) 
+      cylinder(d=holeDiameter, h=Thickness +1);
+}
+}
 
 // holes
 module holes()
