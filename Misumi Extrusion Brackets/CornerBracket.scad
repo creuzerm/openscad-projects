@@ -1,5 +1,5 @@
 Length = 50;
-Thickness = 8;
+Thickness = 6;
 holeDiameter = 3;
 Height = 15;
 
