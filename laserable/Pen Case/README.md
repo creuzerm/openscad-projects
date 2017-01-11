@@ -7,8 +7,14 @@ This is a work in process trying to figure out how to use the laser cutter to cu
 * I want to see if I can engrave the stitch lines into the leather yet.
 * Any emblem will need to be added into the laser cutter software.
 
-
+Output .dwg
 ![alt tag](./PenCase.png)
+
+Laser Cut Leather
+![alt tag](./2017-01-09 21.46.25.jpg)
+
+Pen Case
+![alt tag](./2017-01-09 21.47.50.jpg)
 
 
 Youtube Video of what I am attempting to do
