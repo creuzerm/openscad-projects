@@ -41,9 +41,9 @@ module HeelTab()
    
    difference()
     {
-        square([40, FinalWidth/2]);
+        square([40, FinalWidth/2 - 20]);
         // Long lines
-        for(offset = [0 : StitchHoles + StichGap : (FinalWidth/2) - SeamAllowance - SeamAllowance])
+        for(offset = [0 : StitchHoles + StichGap : (FinalWidth/2 -20) - SeamAllowance - SeamAllowance])
         {
             translate([SeamAllowance, offset + SeamAllowance] )  circle(d=StitchHoles);
             translate([20 - SeamAllowance , offset + SeamAllowance] )  circle(d=StitchHoles);
@@ -51,9 +51,9 @@ module HeelTab()
             translate([40 - SeamAllowance, offset + SeamAllowance] )  circle(d=StitchHoles);
         }
         // middle holes
-        translate([20/2, FinalWidth/2  -SeamAllowance ])  circle(d=StitchHoles);
+        translate([20/2, FinalWidth/2 -20 -SeamAllowance ])  circle(d=StitchHoles);
         translate([20/2, SeamAllowance ])  circle(d=StitchHoles);
-        translate([40 - 20/2, FinalWidth/2  -SeamAllowance ])  circle(d=StitchHoles);
+        translate([40 - 20/2, FinalWidth/2  -20  -SeamAllowance ])  circle(d=StitchHoles);
         translate([40 - 20/2, SeamAllowance ])  circle(d=StitchHoles);
     }   
 }
