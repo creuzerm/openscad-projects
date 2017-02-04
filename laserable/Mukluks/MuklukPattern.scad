@@ -33,12 +33,12 @@ module foot()
     union()
     {
         circle(d= FinalWidth);
-        translate([-FinalWidth/2, 0]) square([ FinalWidth , Length - FinalWidth/2]);
+        translate([-FinalWidth/2, 0]) square([ FinalWidth , Length - FinalWidth/2 + 20]);
         
-        translate([-20, Length-(FinalWidth/2)]) square([40, FinalWidth/2]);
+        translate([-20, Length-(FinalWidth/2) + 20]) square([40, FinalWidth/2]);
         
-        translate([21, Length-(FinalWidth/2)]) square([FinalWidth/2 - 21, 20]);
-        translate([-FinalWidth/2 , Length-(FinalWidth/2)]) square([FinalWidth/2 - 21, 20]);
+        translate([20.1, Length-(FinalWidth/2) + 20]) square([FinalWidth/2 - 20.1, 20]);
+        translate([-FinalWidth/2 , Length-(FinalWidth/2) + 20]) square([FinalWidth/2 - 20.1, 20]);
 
     }
 }
