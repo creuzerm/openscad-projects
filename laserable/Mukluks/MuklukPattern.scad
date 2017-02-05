@@ -5,20 +5,42 @@ Rise = 30; // effectivly hight of foot around the toes to the mid point.
 
 LengthOfVamp = 130; //85; // Length of top part of the toe of the shoe. Basically from toe to where your foot starts to rise up to your ankle
 
+LegWidestAround = 460; // How far around a tape measure goes around the widest part of your calf.
+UpperHeight = 460; // From Floor
+
 SeamAllowance = 5;
-StitchHoles = 2;
-StichGap = 2;
+StitchHoles = 1.5;
+StichGap = 3;
 
 
 
 Lower();
-translate ([FinalWidth+ SeamAllowance, 0]) 
-Vamp();
+translate ([FinalWidth+ SeamAllowance, 0]) Vamp();
+translate ([FinalWidth+ SeamAllowance + WidestPart, 0]) FoldedUpper();
 
 
 FinalWidth = WidestPart + Rise*2 + SeamAllowance*2;
 VampOffset = Rise;// It's the stepback from the center of the circle making the toe 
-echo (VampOffset);
+
+
+
+module FoldedUpper()
+{
+    hull()
+    {
+    square([1, ((Length - FinalWidth/2) -  SeamAllowance - VampOffset - Rise - StichGap ) / 2 + 40]);
+    translate([Rise, -LengthOfVamp/2]) square([1, LengthOfVamp/2]);
+    translate([UpperHeight, -LengthOfVamp/2]) square([1, LegWidestAround/2]);
+    }
+
+}
+
+
+
+
+
+
+
 
 module Vamp()
 {
@@ -119,7 +141,7 @@ module Heels()
         {
             translate([offset + SeamAllowance , SeamAllowance])  circle(d=StitchHoles,$fn=60);
         }
-    translate([SeamAllowance , 20/2])  circle(d=StitchHoles);
+    translate([SeamAllowance , 20/2])  circle(d=StitchHoles,$fn=60);
     translate([FinalWidth/2 -20 -SeamAllowance , 20/2])  circle(d=StitchHoles,$fn=60);
 
     }   
@@ -129,7 +151,7 @@ module Toe()
 {
     difference()
     {
-    circle(d= FinalWidth);
+    circle(d= FinalWidth,$fn=60);
     
     //create Quarter circle pattern    
         for (i=[180:8:360]) {
