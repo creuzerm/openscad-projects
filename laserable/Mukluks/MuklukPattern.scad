@@ -28,7 +28,7 @@ module FoldedUpper()
 {
     hull()
     {
-    square([1, ((Length - FinalWidth/2) ) / 2 + 40]);
+    square([1, ((Length - FinalWidth/2) ) / 2 + 40 + 20]);
     translate([Rise, -LengthOfVamp/2]) square([1, LengthOfVamp/2]);
     translate([UpperHeight, -LengthOfVamp/2]) square([1, LegWidestAround/2]);
     }
