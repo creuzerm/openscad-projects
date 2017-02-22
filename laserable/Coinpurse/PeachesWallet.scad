@@ -5,11 +5,16 @@ FlapCurve = 25;
 Seam = 3;
 Stitches = 2;
 
+snapHole = 3;
+
 difference()
 {
     wallet();
     stitchHoles();
-    
+    // Snap Holes
+    translate([FlapCurve + Seam + Stitches + Seam , (Height*3) - FlapCurve]) circle(r=snapHole);
+    translate([FlapCurve + Seam + Stitches + Seam , Height - FlapCurve - Seam - Seam]) circle(r=snapHole);
+
 }
 
 
