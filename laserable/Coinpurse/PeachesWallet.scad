@@ -33,7 +33,7 @@ module stitchHoles()
     
     for (i = [0 : Seam + Stitches : Height*2 - Seam - Stitches])
     {
-        translate([Seam ,  i + Seam]) circle(d=Stitches);
+        translate([Seam ,  i + Seam]) circle(d=Stitches, $fn=60);
         translate([Width + Seam + Stitches + Stitches,  i + Seam]) circle(d=Stitches, $fn=60);
     }
     
