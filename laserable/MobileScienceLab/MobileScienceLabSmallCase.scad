@@ -5,13 +5,13 @@ corner = 40;
 difference()
 {
 Base();
-translate([-5,0]) KodakLens();
-translate([24, -2]) rotate(a=[0,0,30]) Loupe();
-translate([39, -10]) Microscope();
-translate([-18, 36]) Tweezers();
-translate([-7, 20])Flashfill();
+translate([-3,-3]) KodakLens();
+translate([25, -1]) rotate(a=[0,0,30]) Loupe();
+translate([39, -8]) Microscope();
+translate([-18, 33]) Tweezers();
+translate([30, 33])Flashfill();
 translate([-13, 140]) Scissors();
-translate([5, 65])SeekThermal();
+translate([36, 75])SeekThermal();
 }
 
 
@@ -38,7 +38,7 @@ module Scissors()
 module Flashfill()
 {union(){
     square([39,39]);
-    translate([-11,10.5]) square([11,4.5]);
+    translate([-15,10.5]) square([15,4.5]);
 }}
 
 
@@ -64,7 +64,7 @@ module Loupe()
     hull()
     {
         circle(d=25);
-        translate([-5/2, 32-25/2+5/2]) circle(d=5);
+        translate([-5/2, 32-(25/2)-2.5]) circle(d=5);
     }
     translate([-5.5/2, -(5 + 25/2)]) square([5.5,5.5]);
 }}
@@ -73,7 +73,7 @@ module Loupe()
 module Microscope()
 {union(){
     square([27, 20]);
-    translate([-(38-27)/2,20]) square([38, 18]);
+    translate([-(38-27)/2-1,20]) square([38, 18]);
 }}
 
 module Tweezers()
