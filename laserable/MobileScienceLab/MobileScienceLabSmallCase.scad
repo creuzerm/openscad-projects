@@ -20,7 +20,7 @@ module SeekThermal()
 {union(){
     square([33,20]);
     translate([16,20]) square([9,8]);
-    translate([0,11]) circle(d=22);
+    translate([0,10]) circle(d=22);
     
 }}
 
