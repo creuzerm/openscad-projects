@@ -1,5 +1,5 @@
 width = 93;
-length = 171;
+length = 170;
 corner = 40;
 
 difference()
@@ -8,9 +8,9 @@ Base();
 translate([-3,-3]) KodakLens();
 translate([25, -1]) rotate(a=[0,0,30]) Loupe();
 translate([39, -8]) Microscope();
-translate([-18, 33]) Tweezers();
+translate([-18, 30]) Tweezers();
 translate([30, 33])Flashfill();
-translate([-13, 140]) Scissors();
+translate([-13, 138]) Scissors();
 translate([36, 75])SeekThermal();
 }
 
@@ -19,7 +19,7 @@ translate([36, 75])SeekThermal();
 module SeekThermal()
 {union(){
     square([33,20]);
-    translate([20,20]) square([9,8]);
+    translate([16,20]) square([9,8]);
     translate([0,11]) circle(d=22);
     
 }}
@@ -64,7 +64,7 @@ module Loupe()
     hull()
     {
         circle(d=25);
-        translate([-5/2, 32-(25/2)-2.5]) circle(d=5);
+        translate([0, 32-(25/2)-2.5]) circle(d=5);
     }
     translate([-5.5/2, -(5 + 25/2)]) square([5.5,5.5]);
 }}
