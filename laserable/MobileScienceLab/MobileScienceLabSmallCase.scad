@@ -5,22 +5,41 @@ corner = 40;
 difference()
 {
 Base();
-translate([-3,-3]) KodakLens();
-translate([25, -1]) rotate(a=[0,0,30]) Loupe();
-translate([39, -8]) Microscope();
+translate([10,74]) KodakLens();
+translate([56, 118]) rotate(a=[0,0,-45]) Loupe();
+translate([35, 99]) rotate(a=[0,0,90]) Microscope();
 translate([-18, 30]) Tweezers();
-translate([30, 33])Flashfill();
+translate([30, 32])Flashfill();
 translate([-13, 138]) Scissors();
 translate([36, 75])SeekThermal();
+translate([47,7]) rotate(a=[0,0,-170]) WeatherFlowWEATHERmeter();
+translate([-16,24]) rotate(a=[0,0,-70]) USBThumbDrive();
+    
+   translate([-1,38]) circle(d=10.3);
 }
 
 
+module USBThumbDrive()
+{
+    square([10.5,37]);
+}
+
+module WeatherFlowWEATHERmeter()
+{
+    hull()
+    {
+        circle(d=46.5);
+        translate([17,0,0]) circle(d=43.5);
+        translate([41,0,0]) circle(d=33.5);
+        translate([52,0,0]) circle(d=24.4);
+    }
+}
 
 module SeekThermal()
 {union(){
     square([33,20]);
     translate([16,20]) square([9,8]);
-    translate([0,10]) circle(d=22);
+    translate([0,9]) circle(d=22);
     
 }}
 
