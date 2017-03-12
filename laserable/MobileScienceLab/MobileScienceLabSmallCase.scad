@@ -33,7 +33,7 @@ BasePelican1065();
 translate([4,43]) circle(d=10.3);
 
 //Only some layers get this.
-translate([25,-12]) mirror([1,0,0]) Caliper();
+translate([27,-12]) mirror([1,0,0]) Caliper();
 
     //translate([35, 37])Flashfill();
 
@@ -213,6 +213,6 @@ module Tweezers()
 module Caliper()
 {
    square([16,141]); 
-   translate([-11,141]) square([34,70]); 
-   translate([-40,211-29]) square([74,29]); 
+   translate([-9,141]) square([34,70]); 
+   translate([-37,211-29]) square([74,29]); 
 }
