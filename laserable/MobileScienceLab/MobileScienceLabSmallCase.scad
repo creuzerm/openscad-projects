@@ -19,7 +19,6 @@ BasePelican1065();
     translate([61, 123]) rotate(a=[0,0,-45]) Loupe();
     translate([40, 104]) rotate(a=[0,0,90]) Microscope();
     translate([-13, 35]) Tweezers();
-    translate([35, 37])Flashfill();
 
     translate([41, 80])SeekThermal();
     translate([52,12]) rotate(a=[0,0,-170]) WeatherFlowWEATHERmeter();
@@ -32,6 +31,13 @@ BasePelican1065();
     translate([-11,29]) rotate(a=[0,0,-70]) USBThumbDrive();
     
 translate([4,43]) circle(d=10.3);
+
+//Only some layers get this.
+translate([20,-12]) mirror([1,0,0]) Caliper();
+
+    //translate([35, 37])Flashfill();
+
+
 }
 
 
@@ -201,4 +207,12 @@ module Microscope()
 module Tweezers()
 {
    square([9.5,100.5]);
+}
+
+//Caliper();
+module Caliper()
+{
+   square([12,141]); 
+   translate([-11,141]) square([34,70]); 
+   translate([-40,211-29]) square([74,29]); 
 }
