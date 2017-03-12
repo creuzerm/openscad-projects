@@ -6,7 +6,7 @@ Pelican1065Length = 253;
 Pelican1065Corner = 38;
 
 
-
+layer = 5;
 
 
 difference()
@@ -20,9 +20,9 @@ BasePelican1065();
     translate([40, 104]) rotate(a=[0,0,90]) Microscope();
     translate([-13, 35]) Tweezers();
 
-    translate([41, 80])SeekThermal();
+    translate([41, 80])SeekThermal(layer);
     translate([52,12]) rotate(a=[0,0,-170]) WeatherFlowWEATHERmeter();
-    translate([5, 57]) rotate(a=[0,0,-90]) WeatherFlowWEATHERmeterMicPlug();
+    translate([5, 57]) rotate(a=[0,0,-90]) WeatherFlowWEATHERmeterMicPlug(layer);
 
 // Lets stack these
     translate([-10, 140]) MicroscopeSlide();
@@ -107,17 +107,23 @@ module WeatherFlowWEATHERmeter()
     }
 }
 
-module WeatherFlowWEATHERmeterMicPlug()
+module WeatherFlowWEATHERmeterMicPlug(layer)
 {
+    if(layer <=4)
+    {
     square([6,6], center=true);
     translate([0,6]) square([10,7], center=true);
     translate([0,16]) square([5,20], center=true);
+    }
 }
 
-module SeekThermal()
+module SeekThermal(layer)
 {union(){
+    if(layer <= 4)
+    {
     square([33,20]);
     translate([16,20]) square([9,8]);
+    }
     translate([0,9]) circle(d=22);
     
 }}
