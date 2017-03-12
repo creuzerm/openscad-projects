@@ -6,7 +6,7 @@ Pelican1065Length = 253;
 Pelican1065Corner = 38;
 
 
-layer = 5;
+layer = 6;
 
 
 difference()
@@ -25,8 +25,8 @@ BasePelican1065();
     translate([5, 57]) rotate(a=[0,0,-90]) WeatherFlowWEATHERmeterMicPlug(layer);
 
 // Lets stack these
-    translate([-10, 140]) MicroscopeSlide();
-    translate([3, 153]) Scissors(Layer,false);
+    translate([-10, 140]) MicroscopeSlide(layer);
+    translate([3, 153]) Scissors(layer,false);
 
     translate([-11,29]) rotate(a=[0,0,-70]) USBThumbDrive();
     
@@ -98,12 +98,15 @@ module USBThumbDrive()
 
 module WeatherFlowWEATHERmeter()
 {
-    hull()
+    if(layer <=5)
     {
-        circle(d=46.5);
-        translate([17,0,0]) circle(d=43.5);
-        translate([41,0,0]) circle(d=33.5);
-        translate([52,0,0]) circle(d=24.4);
+        hull()
+        {
+            circle(d=46.5);
+            translate([17,0,0]) circle(d=43.5);
+            translate([41,0,0]) circle(d=33.5);
+            translate([52,0,0]) circle(d=24.4);
+        }
     }
 }
 
@@ -141,6 +144,8 @@ module Scissors(layer, standing)
         }
     }else
     {
+        if(layer <=4)
+        {
         hull()
         {
             circle(d=25);
@@ -149,13 +154,17 @@ module Scissors(layer, standing)
             translate([60,-2]) circle(d=15);
 
         }
+        }
     }
     
 }
 
-module MicroscopeSlide()
+module MicroscopeSlide(layer)
 {
-    square([76,26]);
+    if(layer <=4)
+    {
+        square([76,26]);
+    }
 }
 
 module Flashfill()
@@ -188,13 +197,19 @@ module BaseCell()
 }
 
 
-module KodakLens()
+module KodakLens(layer)
 {
-    circle(d=28.3);
+    if(layer <=5)
+    {
+        circle(d=28.3);
+    }
 }
 
-module Loupe()
-{ union(){
+module Loupe(layer)
+{ 
+    if(layer <=5)
+    {
+    union(){
     hull()
     {
         circle(d=25);
@@ -202,11 +217,15 @@ module Loupe()
     }
     translate([-5.5/2, -(5 + 25/2)]) square([5.5,5.5]);
 }}
+}
 
 
 module Microscope()
 {union(){
-    square([27, 20]);
+    if(layer <=5)
+    {
+        square([27, 20]);
+    }
     translate([-(38-27)/2-1,20]) square([38, 18]);
 }}
 
