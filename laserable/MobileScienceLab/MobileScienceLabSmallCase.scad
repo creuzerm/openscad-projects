@@ -132,9 +132,9 @@ module Scissors(layer, standing)
         hull()
         {
             circle(d=25);
-            translate([-8,0]) circle(d=15);
+            translate([-10,-2]) circle(d=15);
             translate([50,0]) circle(d=25);
-            translate([58,0]) circle(d=15);
+            translate([60,-2]) circle(d=15);
 
         }
     }
