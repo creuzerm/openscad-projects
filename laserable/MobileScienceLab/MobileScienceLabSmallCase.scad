@@ -1,10 +1,69 @@
-width = 93;
-length = 170;
-corner = 40;
+CellWidth = 93;
+CellLength = 170;
+CellCorner = 40;
+Pelican1065Width = 197;
+Pelican1065Length = 253;
+Pelican1065Corner = 38;
+
+
+
+
 
 difference()
 {
-Base();
+BasePelican1065();
+    
+    translate([82,-10])  GalaxyNoteEdgeZeroLemonCase();
+    
+    translate([15,79]) KodakLens();
+    translate([61, 123]) rotate(a=[0,0,-45]) Loupe();
+    translate([40, 104]) rotate(a=[0,0,90]) Microscope();
+    translate([-13, 35]) Tweezers();
+    translate([35, 37])Flashfill();
+
+    translate([41, 80])SeekThermal();
+    translate([52,12]) rotate(a=[0,0,-170]) WeatherFlowWEATHERmeter();
+    translate([5, 57]) rotate(a=[0,0,-90]) WeatherFlowWEATHERmeterMicPlug();
+
+// Lets stack these
+    translate([-10, 140]) MicroscopeSlide();
+    translate([3, 153]) Scissors(Layer,false);
+
+    translate([-11,29]) rotate(a=[0,0,-70]) USBThumbDrive();
+    
+translate([4,43]) circle(d=10.3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% CellA();
+
+
+
+
+module CellA()
+{
+difference()
+{
+BaseCell();
 translate([10,74]) KodakLens();
 translate([56, 118]) rotate(a=[0,0,-45]) Loupe();
 translate([35, 99]) rotate(a=[0,0,90]) Microscope();
@@ -17,7 +76,14 @@ translate([-16,24]) rotate(a=[0,0,-70]) USBThumbDrive();
     
    translate([-1,38]) circle(d=10.3);
 }
+}
 
+
+
+module GalaxyNoteEdgeZeroLemonCase()
+{
+    square([87,155]);
+}
 
 module USBThumbDrive()
 {
@@ -35,6 +101,13 @@ module WeatherFlowWEATHERmeter()
     }
 }
 
+module WeatherFlowWEATHERmeterMicPlug()
+{
+    square([6,6], center=true);
+    translate([0,6]) square([10,7], center=true);
+    translate([0,16]) square([5,20], center=true);
+}
+
 module SeekThermal()
 {union(){
     square([33,20]);
@@ -43,15 +116,34 @@ module SeekThermal()
     
 }}
 
-module Scissors()
+//Scissors(0, false);
+module Scissors(layer, standing)
 {
-    hull()
+    if(standing == true)
     {
-        circle(d=5);
-        translate([(85-5)/2,0]) circle(d=10);
-        translate([85-5,0]) circle(d=5);
+        hull()
+        {
+            circle(d=5);
+            translate([(85-5)/2,0]) circle(d=10);
+            translate([85-5,0]) circle(d=5);
+        }
+    }else
+    {
+        hull()
+        {
+            circle(d=25);
+            translate([-8,0]) circle(d=15);
+            translate([50,0]) circle(d=25);
+            translate([58,0]) circle(d=15);
+
+        }
     }
     
+}
+
+module MicroscopeSlide()
+{
+    square([76,26]);
 }
 
 module Flashfill()
@@ -61,14 +153,25 @@ module Flashfill()
 }}
 
 
-module Base()
+module BasePelican1065()
 {
     hull()
     {
-        circle(d=corner);
-        translate([width-corner, 0 ]) circle(d=corner);
-        translate([0, length-corner ])circle(d=corner);
-        translate([width-corner, length-corner ]) circle(d=corner);
+        circle(d=Pelican1065Corner);
+        translate([Pelican1065Width-Pelican1065Corner, 0 ]) circle(d=Pelican1065Corner);
+        translate([0, Pelican1065Length-Pelican1065Corner ])circle(d=Pelican1065Corner);
+        translate([Pelican1065Width-Pelican1065Corner, Pelican1065Length-Pelican1065Corner ]) circle(d=Pelican1065Corner);
+    }
+}
+
+module BaseCell()
+{
+    hull()
+    {
+        circle(d=CellCorner);
+        translate([CellWidth-CellCorner, 0 ]) circle(d=CellCorner);
+        translate([0, CellLength-CellCorner ])circle(d=CellCorner);
+        translate([CellWidth-CellCorner, CellLength-CellCorner ]) circle(d=CellCorner);
     }
 }
 
